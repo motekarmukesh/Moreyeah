@@ -6,16 +6,19 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./view-details.component.css']
 })
 export class ViewDetailsComponent {
-  show = true;
+  
   
    @Input() details:any;
+   
+  todayDate : Date = new Date();
+  
  
   constructor() {
    
    }
 
   ngOnInit(): void {
-    console.log(this.details)
+    
   }
 
 }

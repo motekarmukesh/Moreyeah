@@ -1,4 +1,4 @@
-<div *ngIf="show">
+<div >
     <p>View component working with @input </p>
 
     
@@ -12,11 +12,14 @@
         <td>{{details.Name}}</td>
         <td>{{details.age}}</td>
         <td>{{details.dob}}</td>
-        <td>{{details.createdon}}</td>
+        <td>{{todayDate  | date:'short'}}</td>
     </tr>
     
     
     </table>
     
+      
+    
+      
 
 </div>

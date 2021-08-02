@@ -8,27 +8,37 @@ import { Employee } from './employee';
 })
 export class AppComponent {
   employees:Employee[]=[
-    new Employee(101, "John", 5000,"mukesh" ,27,"07-09-1993","01-01-2021"),
-    new Employee(101, "John", 5000,"hohn" ,27,"07-09-1993","01-01-2021"),
-    new Employee(101, "John", 5000,"doe" ,27,"07-09-1993","01-01-2021"),
-    
+    new Employee("mukesh" ,27,"07-09-1993","01-01-2021"),
+    new Employee("hohn" ,27,"07-09-1993","01-01-2021"),
+    new Employee("doe" ,27,"07-09-1993","01-01-2021"),
+    new Employee("mona" ,27,"07-09-1993","01-01-2021"),
+    new Employee("amin" ,27,"07-09-1993","01-01-2021"),
+    new Employee("yogesh" ,27,"07-09-1993","01-01-2021"),
   ];
-    newemployee:Employee = new Employee(null,null,null,null,null,null,null);
+    newemployee:Employee = new Employee(null,null,null,null);
   msg: void;
   eachdetail: Employee[];
   singleuser: Employee;
+  employee:Employee[] = [];
+
   info: string;
-  show: boolean;
+  str:string = "";
+       sortcolumn = "";
+       order = 1;
+  
+       constructor(){
+        this.employee = this.employees;
+     }
+ 
+  
   onInsertClick(){
-    this.employees.push(new Employee(this.newemployee.empId,this.newemployee.empname,this.newemployee.salary,this.newemployee.Name,
-      this.newemployee.age,this.newemployee.dob,this.newemployee.createdon));
-     this.newemployee.empId = null;
-     this.newemployee.empname = null;
-     this.newemployee.salary = null;
+    this.employees.push(new Employee(this.newemployee.Name,
+      this.newemployee.age,this.newemployee.dob,this.newemployee.createdon))
      this.newemployee.Name=null;
      this.newemployee.age=null;
      this.newemployee.dob=null;
      this.newemployee.createdon=null;
+     console.log("reg working");
  }
 
  onDeleteClick(n){
@@ -41,8 +51,16 @@ export class AppComponent {
    this.singleuser=this.eachdetail[n]
    console.log(this.singleuser)
    
-   this.show = true;
+   
  }
+ onSortClick(){
+  this.employees = this.employees.sort((emp1,emp2) => {
+        
+        if(this.sortcolumn=="Name"){
+           return (emp1[this.sortcolumn].charCodeAt(0) - emp2[this.sortcolumn].charCodeAt(0)) * this.order;
+        }
+  });
+}    
 
  
 }
